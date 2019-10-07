@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hello, Web Playback!</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- import the webpage's stylesheet -->
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- import the webpage's javascript file -->
+  <script src="/web-playback.js" defer></script>
+
+  <!-- import spotify's default design stylesheet -->
+  <link href="https://sp-bootstrap.global.ssl.fastly.net/8.2.4/sp-bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="container">
+  <h1 class="text-spotify-green">Spotify Web Playback SDK</h1>
+  
+  <p>
+    This app uses the following:
+  </p>
+  
+  <ul>
+    <li><a href="https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow" target="_blank">Implicit Grant Flow</a> with the Accounts API &mdash; to get an <code>access_token</code> to call the Web API & Web Playback SDK</li>
+    <li><a href="https://developer.spotify.com/documentation/web-playback-sdk/" target="_blank">Web Playback SDK</a> (beta) &mdash; to create a Spotify Player inside of our web app <strong>(Spotify Premium required)</strong></li>
+    <li><a href="https://developer.spotify.com/documentation/web-api/reference/player/transfer-a-users-playback/" target="_blank">Transfer a User's Playback API</a> (beta) &mdash; to transfer playback from Spotify's other clients to our Spotify Player</li>
+    <li><a href="https://developer.spotify.com/documentation/web-api/reference/player/start-a-users-playback/" target="_blank">Start/Resume a User's Playback API</a> (beta) &mdash; to initiate playback on our Spotify Player.</li>
+    <li><a href="https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/" target="_blank">Get Audio Features</a> &mdash; to obtain the <code>danceability</code> of the currently playing track.</li>
+  </ul>
+  
+  <p>If everything is set up properly, you should hear some music!</p>
+  
+  <p><strong>Developers:</strong> Want to play about with the Web Playback SDK? Press <kbd>⌘ + I</kbd> to open Developer Tools and run:</p>
+  
+  <pre><code>> <span style='color: black'>app.player</span> <em>// Our instance of the Web Playback SDK</em>
+> <span style='color: black'>app.transferPlayback()</span> <em>// Transfer playback to our player</em>
+> <span style='color: black'>app.play({ trackUri: 'spotify:track:1y7agAufBsudgRXuq6Ekqb' })</span> <em>// Start playing a Spotify track</em>
+> <span style='color: black'>app.play({ trackUri: 'spotify:track:1y7agAufBsudgRXuq6Ekqb', positionMs: 60 * 1000 })</span> <em>// Or, start playing from 60 seconds</em>
+> <span style='color: black'>app.player.setName('My Player Name')</span> <em>// Update player name</em>
+> <span style='color: black'>app.player.getCurrentState().then(({ track_window }) => console.log(track_window.current_track.name))</span> <em>// Get current track name</em></code></pre>
+  
+  <img id="current-track" />
+  <h3 id="current-spotify-green"></h3>
+  <a class="btn btn-spotify-green btn-md" href="https://glitch.com/edit/#!/capitolroyale2">Remix with Glitch</a>
+
+  <!-- include the Glitch button to show what the webpage is about and
+       to make it easier for folks to view source and remix -->
+  <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+  <script src="https://button.glitch.me/button.js"></script>
+  
+  <!-- include the spotify web playback sdk -->
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+</body>
+</html>
